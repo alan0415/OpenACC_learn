@@ -1,0 +1,24 @@
+[root@c01 Openacc]# vim ex3-13.c
+[root@c01 Openacc]# pgcc -acc -Minfo ex3-13.c -o ex3-13.exe
+main:
+     10, Generating implicit copyin(b[:])
+         Generating implicit copyout(b[1:])
+         Generating implicit copyout(a[:])
+         Generating implicit copyin(c[:])
+     13, Loop is parallelizable
+         Accelerator kernel generated
+         Generating Tesla code
+         13, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+     17, Loop carried dependence of b prevents parallelization
+         Loop carried backward dependence of b prevents vectorization
+         Accelerator serial kernel generated
+         Accelerator kernel generated
+         Generating Tesla code
+         17, #pragma acc loop seq
+     17, Loop carried dependence of b prevents parallelization
+         Loop carried backward dependence of b prevents vectorization
+         Memory copy idiom, loop replaced by call to __c_mcopy4
+
+
+# commit
+use #pragma acc loop independent to force compiler active parallel without checkout dependency
