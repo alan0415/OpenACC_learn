@@ -1,0 +1,10 @@
+[root@c01 Openacc]# pgcc -acc -Minfo klc.c -o klc.exe
+main:
+     11, Generating implicit copyout(a[:])
+         Generating implicit copyin(c[:],b[:])
+     12, Loop is parallelizable
+         Accelerator kernel generated
+         Generating Tesla code
+         12, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
+[root@c01 Openacc]# export PGI_ACC_NOTIFY=1
+

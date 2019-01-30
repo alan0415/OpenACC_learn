@@ -1,0 +1,13 @@
+[root@c01 Openacc]# pgcc -acc -Minfo ex3-11.c -o ex3-11.exe
+main:
+     12, Generating implicit copyout(a[:][:][:])
+         Generating implicit copyin(c[:][:][:],b[:][:][:])
+     13, Loop is parallelizable
+     14, Loop is parallelizable
+     15, Loop is parallelizable
+         Accelerator kernel generated
+         Generating Tesla code
+         13, #pragma acc loop gang /* blockIdx.y */
+         14, #pragma acc loop gang, vector(4) /* blockIdx.z threadIdx.y */
+         15, #pragma acc loop gang, vector(32) /* blockIdx.x threadIdx.x */
+

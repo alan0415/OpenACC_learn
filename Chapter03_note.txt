@@ -1,0 +1,3 @@
+# Use to observe the code processing
+export PGI_ACC_NOTIFY=1
+
